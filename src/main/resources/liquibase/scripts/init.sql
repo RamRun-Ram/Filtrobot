@@ -1,12 +1,12 @@
 --liquibase formatted sql
 
 --changeset MikhailShad:create_project_schema
-create schema if not exists filterbot;
+create schema if not exists filtrobot;
 --rollback
---drop schema filterbot;
+--drop schema filtrobot;
 
 --changeset MikhailShad:create_orders_table
-set schema 'filterbot';
+set schema 'filtrobot';
 create sequence if not exists channel_id_gen start 1000 increment 50;
 create table if not exists channel
 (
