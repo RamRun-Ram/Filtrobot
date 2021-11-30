@@ -11,13 +11,13 @@ class Preference(
     @Id
     @SequenceGenerator(name = "preference_id_gen", initialValue = 1000)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "preference_id_gen")
-    var id: Long?,
+    var id: Long,
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    var user: User?,
+    var user: User,
 
-    var keyword: String?,
+    var keyword: String,
 
     @Enumerated(value = EnumType.STRING)
     var preferenceType: PreferenceType

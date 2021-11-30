@@ -11,13 +11,13 @@ class User(
      * ID пользователя в Telegram
      */
     @Id
-    var id: Long?,
+    var id: Long,
 
     /**
      * Имя пользователя в Telegram
      */
     @NaturalId
-    var username: String?,
+    var username: String,
 
     /**
      * ID чата с ботом, куда будет отправляться посты
