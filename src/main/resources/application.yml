@@ -1,0 +1,48 @@
+logging:
+  level:
+    root: INFO
+    ru:
+      sberschool:
+        filtrobot: DEBUG
+
+spring:
+  application:
+    name: Filtrobot
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    hibernate:
+      ddl-auto: validate
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+    properties:
+      hibernate:
+        default_schema: filtrobot
+        format_sql: true
+    show-sql: false
+  liquibase:
+    change-log: classpath:liquibase/db.changelog-master.yaml
+    password: ${spring.datasource.password}
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: heroku
+  datasource:
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: default
+  datasource:
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
