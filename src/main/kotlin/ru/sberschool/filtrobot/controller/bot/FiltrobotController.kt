@@ -1,15 +1,17 @@
-package ru.sberschool.filtrobot.service
+package ru.sberschool.filtrobot.controller.bot
 
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.stereotype.Service
+import org.springframework.context.annotation.Profile
+import org.springframework.stereotype.Controller
 import org.telegram.telegrambots.bots.TelegramLongPollingBot
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
 import org.telegram.telegrambots.meta.api.objects.User
 import ru.sberschool.filtrobot.vo.BotResponse
 
-@Service
-class FiltrobotService : TelegramLongPollingBot() {
+@Profile(value = ["heroku"])
+@Controller
+class FiltrobotController : TelegramLongPollingBot() {
 
     @Value(value = "\${telegram.bot.name}")
     lateinit var name: String

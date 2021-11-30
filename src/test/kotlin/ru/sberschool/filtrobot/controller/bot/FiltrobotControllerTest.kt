@@ -1,4 +1,4 @@
-package ru.sberschool.filtrobot.service
+package ru.sberschool.filtrobot.controller.bot
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -19,9 +19,9 @@ import org.telegram.telegrambots.meta.api.objects.User
 private fun <T> any(type: Class<T>): T = Mockito.any<T>(type)
 
 @ExtendWith(MockitoExtension::class)
-internal class FiltrobotServiceTest {
+internal class FiltrobotControllerTest {
 
-    private val bot: FiltrobotService = mock(FiltrobotService::class.java)
+    private val bot: FiltrobotController = mock(FiltrobotController::class.java)
 
     @Captor
     lateinit var responseCaptor: ArgumentCaptor<SendMessage>
