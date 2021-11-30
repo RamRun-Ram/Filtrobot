@@ -1,6 +1,7 @@
 package ru.sberschool.filtrobot.service
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -13,6 +14,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Chat
 import org.telegram.telegrambots.meta.api.objects.Message
 import org.telegram.telegrambots.meta.api.objects.Update
+import org.telegram.telegrambots.meta.api.objects.User
 
 private fun <T> any(type: Class<T>): T = Mockito.any<T>(type)
 
@@ -36,7 +38,7 @@ internal class FiltrobotServiceTest {
 
         bot.onUpdateReceived(update)
 
-        assertResponseEqualsTo("Добро пожаловать!")
+        assertResponseContains("Привет", "Мои команды")
     }
 
     @Test
@@ -66,6 +68,7 @@ internal class FiltrobotServiceTest {
         val message = Message()
         message.text = messageText
         message.chat = chat
+        message.from = User()
 
         val update = Update()
         update.message = message
@@ -77,5 +80,13 @@ internal class FiltrobotServiceTest {
         Mockito.verify(bot).execute(responseCaptor.capture())
         val response = responseCaptor.value
         assertEquals(expected, response.text)
+    }
+
+    private fun assertResponseContains(vararg expected: String) {
+        Mockito.verify(bot).execute(responseCaptor.capture())
+        val response = responseCaptor.value
+        expected.forEach {
+            assertTrue(response.text.contains(it))
+        }
     }
 }

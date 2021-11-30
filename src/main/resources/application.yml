@@ -29,7 +29,7 @@ spring:
 
 telegram:
   bot:
-    name: filtrobot
+    name: SberFiltroBot
 
 ---
 spring:
