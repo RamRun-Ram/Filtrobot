@@ -9,7 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.Update
 import org.telegram.telegrambots.meta.api.objects.User
 import ru.sberschool.filtrobot.vo.BotResponse
 
-@Profile(value = ["heroku"])
+@Profile(value = ["local", "heroku"])
 @Controller
 class FiltrobotController : TelegramLongPollingBot() {
 
@@ -52,25 +52,34 @@ class FiltrobotController : TelegramLongPollingBot() {
 
     /**
      * Вызывается при старте бота, возвращает список доступных команд с описанием, что и как работает
+     * TODO: как-то запариться с форматированием бы, а то не очень красиво
      */
     private fun getWelcomeInstruction(): BotResponse {
         return BotResponse(
             """Привет, я @$name!
-            Я умею пересылать сообщения из каналов в Telegram и фильтровать их по ключевым словам.
-            ${getHelpInstruction().text}
-        """.trimIndent()
+   
+Я умею пересылать сообщения из каналов в Telegram и фильтровать их по ключевым словам.
+
+${getHelpInstruction().text}"""
+                .trimIndent()
         )
     }
 
+    /**
+     * TODO: как-то запариться с форматированием бы, а то не очень красиво
+     */
     private fun getHelpInstruction(): BotResponse {
         return BotResponse(
             """Мои команды:
-            * /subscribe @<имя_канала> - подписаться на новости из канала
-            * /addPreference <ключевое_слово> <+ или -> - включить фильтр новостей по ключевому слову.
-             Знак "+" добавит включающий фильтр, а знак "-" добавит исключающий фильтр
-            * /removePreference <ключевое_слово>- отключить фильтр новостей по ключевому слову
-            * /unsubscribe @<имя_канала> - отписаться от канала
-        """.trimIndent()
+• /subscribe `@имя_канала` - подписаться на новости из канала
+
+• /addPreference `ключевое_слово` `+ или -` - включить фильтр новостей по ключевому слову.
+Знак "+" добавит включающий фильтр, а знак "-" добавит исключающий фильтр
+
+• /removePreference `ключевое_слово` - отключить фильтр новостей по ключевому слову
+
+• /unsubscribe `@имя_канала` - отписаться от канала"""
+                .trimIndent().replace("\t", "")
         )
     }
 

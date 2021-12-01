@@ -2,6 +2,7 @@
   <configuration default="false" name="FiltrobotApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <module name="filtrobot" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="ru.sberschool.filtrobot.FiltrobotApplication" />
+    <option name="ACTIVE_PROFILES" value="local" />
     <option name="ALTERNATIVE_JRE_PATH" />
     <additionalParameters>
       <param>
