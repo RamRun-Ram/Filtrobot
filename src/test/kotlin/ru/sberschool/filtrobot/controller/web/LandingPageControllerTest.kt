@@ -1,4 +1,4 @@
-package ru.sberschool.filtrobot.controller
+package ru.sberschool.filtrobot.controller.web
 
 import io.zonky.test.db.AutoConfigureEmbeddedDatabase
 import org.junit.jupiter.api.BeforeEach

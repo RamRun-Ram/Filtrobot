@@ -1,4 +1,4 @@
-package ru.sberschool.filtrobot.controller
+package ru.sberschool.filtrobot.controller.web
 
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping

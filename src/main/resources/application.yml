@@ -27,6 +27,10 @@ spring:
     url: ${spring.datasource.url}
     user: ${spring.datasource.username}
 
+telegram:
+  bot:
+    name: SberFiltroBot
+
 ---
 spring:
   config:
@@ -37,12 +41,20 @@ spring:
     username: ${JDBC_DATABASE_USERNAME}
     password: ${JDBC_DATABASE_PASSWORD}
 
+telegram:
+  bot:
+    token: ${TG_BOT_TOKEN}
+
 ---
 spring:
   config:
     activate:
-      on-profile: default
+      on-profile: default,local
   datasource:
     password: postgres
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
+
+telegram:
+  bot:
+    token: ${TG_BOT_TOKEN:test}

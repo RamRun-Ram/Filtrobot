@@ -2,8 +2,15 @@
   <configuration default="false" name="FiltrobotApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <module name="filtrobot" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="ru.sberschool.filtrobot.FiltrobotApplication" />
+    <option name="ACTIVE_PROFILES" value="local" />
     <option name="ALTERNATIVE_JRE_PATH" />
-    <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+    <additionalParameters>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="TG_BOT_TOKEN" />
+        <option name="value" value="your_bot_token" />
+      </param>
+    </additionalParameters>
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
